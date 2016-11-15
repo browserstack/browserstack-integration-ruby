@@ -49,3 +49,13 @@ BROWSERSTACK_ACCESS_KEY - your BrowserStack accesskey
 ```ruby
 bundle exec rake
 ```
+
+
+## To integrate to your cucumber framework
+
+- Add the following to `features/support/env.rb` file. Please create the file if you don't already have one.
+
+```ruby
+require 'browserstack-patch'
+BrowserStack.for "cucumber"
+```
