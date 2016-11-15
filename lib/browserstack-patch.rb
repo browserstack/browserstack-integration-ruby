@@ -1,7 +1,7 @@
 require 'selenium/webdriver'
 require 'browserstack/local'
 
-$cucumber_after = self.method(:After)
+$cucumber_after = self.method(:After) rescue nil
 
 module Selenium
   module WebDriver
