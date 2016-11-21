@@ -7,7 +7,9 @@ $browserstack_access_key = ENV['BROWSERSTACK_ACCESS_KEY'] || ENV['BROWSERSTACK_A
 
 if ENV['RUN_ON_BSTACK'].to_s.match(/true/)
   require_relative './browserstack-patch/webdriver_patch.rb'
-  require_relative './browserstack-patch/keep_alive_patch.rb'
+  
+  # See: https://github.com/SeleniumHQ/selenium/issues/2950
+  require_relative './browserstack-patch/keep_alive_patch.rb' unless Gem.loaded_specs["selenium-webdriver"].version.to_s.start_with?("3")
 end
 
 module BrowserStack
