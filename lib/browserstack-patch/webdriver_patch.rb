@@ -16,7 +16,9 @@ module Selenium
         opts[:desired_capabilities][:device] = ENV['BSTACK_DEVICE']
 
         if ENV['RUN_ON_BSTACK'] && ENV['RUN_ON_BSTACK'].match(/true/i)
-          opts[:url] = "https://#{$browserstack_username}:#{$browserstack_access_key}@hub.browserstack.com/wd/hub"
+          browserstack_username = ENV['BROWSERSTACK_USERNAME'] || ENV['BROWSERSTACK_USER']
+          browserstack_access_key = ENV['BROWSERSTACK_ACCESS_KEY'] || ENV['BROWSERSTACK_ACCESSKEY']
+          opts[:url] = "https://#{browserstack_username}:#{browserstack_access_key}@hub.browserstack.com/wd/hub"
 
           opts[:desired_capabilities]['browserstack.framework'] = BrowserStack::get_framework
           opts[:desired_capabilities]['browserstack.framework_version'] = BrowserStack::get_framework_version
