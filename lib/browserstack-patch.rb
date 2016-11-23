@@ -64,6 +64,11 @@ module BrowserStack
       $cucumber_after.call do
         @@bs_local.stop() if @@bs_local
       end
+    else
+      Signal.trap("EXIT") do
+        @@bs_local.stop if @@bs_local
+        Kernel.exit!
+      end
     end
   end
 end
