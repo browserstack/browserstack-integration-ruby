@@ -2,8 +2,6 @@ require 'selenium/webdriver'
 require 'browserstack/local'
 
 $cucumber_after = self.method(:After) rescue nil
-$browserstack_username = ENV['BROWSERSTACK_USERNAME'] || ENV['BROWSERSTACK_USER']
-$browserstack_access_key = ENV['BROWSERSTACK_ACCESS_KEY'] || ENV['BROWSERSTACK_ACCESSKEY']
 
 if ENV['RUN_ON_BSTACK'].to_s.match(/true/)
   require_relative './browserstack-patch/webdriver_patch.rb'
@@ -55,8 +53,9 @@ module BrowserStack
   private
   def self.start_local
     @@bs_local = BrowserStack::Local.new
+    browserstack_access_key = ENV['BROWSERSTACK_ACCESS_KEY'] || ENV['BROWSERSTACK_ACCESSKEY']
     bs_local_args = {
-      'key' => $browserstack_access_key,
+      'key' => browserstack_access_key,
       'localIdentifier' => @@bstack_identifier
     }
     @@bs_local.start(bs_local_args)
@@ -64,6 +63,11 @@ module BrowserStack
     if @@framework.match(/cucumber/i)
       $cucumber_after.call do
         @@bs_local.stop() if @@bs_local
+      end
+    else
+      Signal.trap("EXIT") do
+        @@bs_local.stop if @@bs_local
+        Kernel.exit!
       end
     end
   end
