@@ -3,20 +3,24 @@ require 'browserstack/local'
 
 $cucumber_after = self.method(:After) rescue nil
 
-if ENV['RUN_ON_BSTACK'].to_s.match(/true/)
-  require_relative './browserstack-patch/webdriver_patch.rb'
-  
-  # See: https://github.com/SeleniumHQ/selenium/issues/2950
-  require_relative './browserstack-patch/keep_alive_patch.rb' unless Gem.loaded_specs["selenium-webdriver"].version.to_s.start_with?("3")
-end
-
 module BrowserStack
-  @@framework = 'ruby'
+  @@framework = 'noFramework'
   @@bs_local = nil
   @@bstack_identifier = "bstack_patches_#{(0...16).map { ('a'..'z').to_a[rand(26)] }.join}"
 
-  def self.for(framework)
-    @@framework = framework
+  def self.integrate
+    if ENV['RUN_ON_BSTACK'].to_s.match(/true/)
+      require_relative './browserstack-patch/webdriver_patch.rb'
+
+      # See: https://github.com/SeleniumHQ/selenium/issues/2950
+      require_relative './browserstack-patch/keep_alive_patch.rb' unless Gem.loaded_specs["selenium-webdriver"].version.to_s.start_with?("3")
+    end
+
+    if Kernel.const_defined?("Cucumber") && Cucumber.class.eql?(Module)
+      @@framework = 'cucumber'
+    else
+      @@framework = 'noFramework'
+    end
   end
 
   def self.get_framework

@@ -2,7 +2,7 @@ require 'rubygems'
 require 'selenium-webdriver'
 require 'browserstack-patch'
 
-BrowserStack.for "ruby"
+BrowserStack.integrate
 
 @repeat = ENV['REPEAT'] || 5
 

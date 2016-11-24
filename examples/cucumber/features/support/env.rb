@@ -1,9 +1,9 @@
 require 'selenium/webdriver'
 
 require 'browserstack-patch'
-BrowserStack.for "cucumber"
+BrowserStack.integrate
 
-browser = Selenium::WebDriver.for :firefox
+browser = Selenium::WebDriver.for :chrome # :remote, :desired_capabilities => { :browser => "chrome" }
 
 Before do |scenario|
   @browser = browser
