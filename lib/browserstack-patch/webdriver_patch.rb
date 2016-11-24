@@ -5,12 +5,13 @@ module Selenium
 
       def for(*args)
         browser = args.shift
+        browser = nil if browser.to_s.downcase == 'remote'
         opts = args.shift || {}
         opts[:url] = opts[:url] || 'http://127.0.0.1:4444/wd/hub'
         opts[:desired_capabilities] = opts[:desired_capabilities] || {}
 
-        opts[:desired_capabilities][:browserName] = ENV['BSTACK_BROWSER'] || browser
-        opts[:desired_capabilities][:browser] = ENV['BSTACK_BROWSER'] || browser
+        opts[:desired_capabilities][:browserName] = ENV['BSTACK_BROWSER'] || browser || opts[:desired_capabilities][:browserName] || opts[:desired_capabilities][:browser]
+        opts[:desired_capabilities][:browser] = opts[:desired_capabilities][:browserName]
         opts[:desired_capabilities][:browser_version] = ENV['BSTACK_BROWSER_VERSION']
         opts[:desired_capabilities][:os] = ENV['BSTACK_OS']
         opts[:desired_capabilities][:os_version] = ENV['BSTACK_OS_VERSION']
