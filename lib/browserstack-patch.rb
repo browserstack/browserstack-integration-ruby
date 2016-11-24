@@ -11,7 +11,7 @@ if ENV['RUN_ON_BSTACK'].to_s.match(/true/)
 end
 
 module BrowserStack
-  @@framework = 'ruby'
+  @@framework = 'rubyFramework'
   @@bs_local = nil
   @@bstack_identifier = "bstack_patches_#{(0...16).map { ('a'..'z').to_a[rand(26)] }.join}"
 
