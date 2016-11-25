@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = [ "BrowserStack Support" ]
   spec.email         = [ "support@browserstack.com" ]
 
-  spec.summary       = %q{BrowserStack patch for Selenium webdriver and frameworks}
+  spec.summary       = %q{Run Cucumber tests on BrowserStack Automate using our Ruby integration.}
   spec.homepage      = "https://www.browserstack.com"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
