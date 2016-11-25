@@ -9,6 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = [ "BrowserStack Support" ]
   spec.email         = [ "support@browserstack.com" ]
 
+  spec.description   = %q{Run Cucumber tests on BrowserStack Automate using our Ruby integration.}
   spec.summary       = %q{Run Cucumber tests on BrowserStack Automate using our Ruby integration.}
   spec.homepage      = "https://www.browserstack.com"
 
@@ -26,10 +27,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "selenium-webdriver"
-  spec.add_dependency "browserstack-local", "~> 1.2.0"
-  spec.add_dependency "curb"
+  spec.add_dependency "browserstack-local", "~> 1.2"
+  spec.add_dependency "curb", '~> 0'
 
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "appraisal"
+  spec.add_development_dependency "appraisal", '~> 0'
 end
