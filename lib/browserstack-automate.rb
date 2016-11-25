@@ -4,14 +4,14 @@ require 'browserstack/local'
 $cucumber_after = self.method(:After) rescue nil
 
 if ENV['RUN_ON_BSTACK'].to_s.match(/true/)
-  require_relative './browserstack-patch/webdriver_patch.rb'
+  require_relative './browserstack-automate/webdriver_patch.rb'
   
   # See: https://github.com/SeleniumHQ/selenium/issues/2950
-  require_relative './browserstack-patch/keep_alive_patch.rb' unless Gem.loaded_specs["selenium-webdriver"].version.to_s.start_with?("3")
+  require_relative './browserstack-automate/keep_alive_patch.rb' unless Gem.loaded_specs["selenium-webdriver"].version.to_s.start_with?("3")
 end
 
 module BrowserStack
-  @@framework = 'ruby'
+  @@framework = 'rubyFramework'
   @@bs_local = nil
   @@bstack_identifier = "bstack_patches_#{(0...16).map { ('a'..'z').to_a[rand(26)] }.join}"
 

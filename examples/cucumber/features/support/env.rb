@@ -1,6 +1,6 @@
 require 'selenium/webdriver'
 
-require 'browserstack-patch'
+require 'browserstack-automate'
 BrowserStack.for "cucumber"
 
 browser = Selenium::WebDriver.for :firefox

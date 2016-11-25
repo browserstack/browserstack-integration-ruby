@@ -2,7 +2,7 @@ require 'selenium/webdriver'
 require 'net/http'
 require 'json'
 
-require 'browserstack-patch'
+require 'browserstack-automate'
 BrowserStack.for "cucumber"
 
 browser = Selenium::WebDriver.for :firefox

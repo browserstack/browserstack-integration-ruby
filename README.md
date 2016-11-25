@@ -33,22 +33,13 @@ The following environment variables are supported,
 
 ```
 RUN_ON_BSTACK - Boolean. To run your tests on BrowserStack
-BSTACK_BROWSER - The browser to run your tests on BrowserStack
-BSTACK_BROWSER_VERSION - The browser_version to run your tests on BrowserStack
-BSTACK_OS - The os to run your tests on BrowserStack
-BSTACK_OS_VERSION - The os_version to run your tests on BrowserStack
-BSTACK_DEVICE - The device to run your tests on BrowserStack
 BSTACK_LOCAL - Boolean. Whether to start/stop BrowserStackLocal for your tests
-
-BSTACK_BUILD - Build name for the automate session
-BSTACK_PROJECT - Project name for the automate session
-BSTACK_NAME - Test name for the automate session
 
 BROWSERSTACK_USERNAME - your BrowserStack username
 BROWSERSTACK_ACCESS_KEY - your BrowserStack accesskey
 ```
 
-## To run tests
+## To run unit-tests
 
 ```ruby
 bundle exec rake
@@ -60,6 +51,6 @@ bundle exec rake
 - Add the following to `features/support/env.rb` file. Please create the file if you don't already have one.
 
 ```ruby
-require 'browserstack-patch'
+require 'browserstack-automate'
 BrowserStack.for "cucumber"
 ```
