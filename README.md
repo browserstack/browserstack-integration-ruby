@@ -1,56 +1,71 @@
-# BrowserStack-Integration
+# BrowserStack-Automate
 
-Patches for Selenium scripts and test suites to run on BrowserStack when RUN_ON_BSTACK=true is set in environment.
-Currently supports Capybara
+Run Cucumber tests on BrowserStack Automate using our Ruby integration.
+
+> Running your Selenium tests on BrowserStack requires a username and an access key. To create an account go to www.browserstack.com/automate
 
 ![BrowserStack Logo](https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780)
 
-# Ruby
+## Running First Test
 
-## Setup
-* Clone the repo
-* Install dependencies `bundle install`
-* Export the environment variables for the Username and Access Key of your BrowserStack account
-  
-  ```
-  export BROWSERSTACK_USERNAME=<browserstack-username>
-  export BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
-  ```
+You can use our integration to run your Cucumber tests on BrowserStack. It's a simple two-step process:
 
-## Running the test
-
-### Ruby script
-- To run locally, run `cd examples/simple_sample/ && bundle install`
-- To run on BrowserStack, run `RUN_ON_BSTACK=true bundle exec ruby sample.rb`
-
-### Cucumber test
-- To run locally, run `cd examples/cucumber/ && bundle install`
-- To run on BrowserStack, run `RUN_ON_BSTACK=true bundle exec cucumber`
-
-## Configuring Tests
-
-The following environment variables are supported,
+#### Step 1 - Install *browserstack-automate* integration
 
 ```
-RUN_ON_BSTACK - Boolean. To run your tests on BrowserStack
-BSTACK_LOCAL - Boolean. Whether to start/stop BrowserStackLocal for your tests
-
-BROWSERSTACK_USERNAME - your BrowserStack username
-BROWSERSTACK_ACCESS_KEY - your BrowserStack accesskey
+gem install browserstack-automate
 ```
 
-## To run unit-tests
+#### Step 2 - Add it to your `support/env.rb` file 
 
-```ruby
-bundle exec rake
+You just need to add this to your configuration file
+
 ```
-
-
-## To integrate to your cucumber framework
-
-- Add the following to `features/support/env.rb` file. Please create the file if you don't already have one.
-
-```ruby
 require 'browserstack-automate'
 BrowserStack.for "cucumber"
 ```
+
+That's it! You can now execute your tests on BrowserStack by using the `RUN_ON_BSTACK`, `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY` environment variables.
+
+```bash
+RUN_ON_BSTACK=true BROWSERSTACK_USERNAME=<your_username> BROWSERSTACK_ACCESS_KEY=<your_access_key> bundle exec cucumber
+```
+
+## Running Local Tests
+
+In order to run tests inside your local development environments, use ```BSTACK_LOCAL=true```.
+
+```
+RUN_ON_BSTACK=true BSTACK_LOCAL=true BROWSERSTACK_USERNAME=<username> BROWSERSTACK_ACCESS_KEY=<access_key> bundle exec cucumber
+```
+
+This creates an instance of BrowserStack Local Binary for every single build. To know more about how this works, read our documentation on [Local Testing](www.browserstack.com/local-testing).
+
+
+## Running Parallel Tests
+
+You can run your parallel tests on BrowserStack by adding ```RUN_ON_BSTACK=true``` to your parallel tests.
+
+```
+RUN_ON_BSTACK=true BROWSERSTACK_USERNAME=<username> BROWSERSTACK_ACCESS_KEY=<access_key>  bundle exec cucumber
+```
+
+## Integrating with CI
+
+Configure these parameters in your Continuous Integration platform to run your tests directly on BrowserStack
+
+```
+//Required
+RUN_ON_BSTACK - Boolean. To run your tests on BrowserStack
+BROWSERSTACK_USERNAME - your BrowserStack username
+BROWSERSTACK_ACCESS_KEY - your BrowserStack accesskey
+
+//Optional
+BSTACK_LOCAL - Boolean. Whether to start/stop BrowserStackLocal for your tests
+```
+
+## Further Reading
+* [BrowerStack Automate documentation for Cucumber](www.browserstack.com/automate/cucumber-integration)
+* [BrowserStack Automate documentation for Ruby](www.browserstack.com/automate/ruby)
+* [Full range of testing capabilities on BrowserStack](www.browserstack.com/automate/capabilities)
+* [Testing local, development servers with BrowserStack](www.browserstack.com/local-testing)
