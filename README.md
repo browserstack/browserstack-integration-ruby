@@ -2,7 +2,7 @@
 
 Run Cucumber tests on BrowserStack Automate using our Ruby integration.
 
-> Running your Selenium tests on BrowserStack requires a username and an access key. To create an account go to www.browserstack.com/automate
+> Running your Selenium tests on BrowserStack requires a username and an access key. To create an account go to [BrowserStack Automate](https://www.browserstack.com/automate)
 
 ![BrowserStack Logo](https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780)
 
@@ -39,7 +39,7 @@ In order to run tests inside your local development environments, use ```BSTACK_
 RUN_ON_BSTACK=true BSTACK_LOCAL=true BROWSERSTACK_USERNAME=<username> BROWSERSTACK_ACCESS_KEY=<access_key> bundle exec cucumber
 ```
 
-This creates an instance of BrowserStack Local Binary for every single build. To know more about how this works, read our documentation on [Local Testing](www.browserstack.com/local-testing).
+This creates an instance of BrowserStack Local Binary for every single build. To know more about how this works, read our documentation on [Local Testing](https://www.browserstack.com/local-testing).
 
 
 ## Running Parallel Tests
@@ -65,7 +65,7 @@ BSTACK_LOCAL - Boolean. Whether to start/stop BrowserStackLocal for your tests
 ```
 
 ## Further Reading
-* [BrowerStack Automate documentation for Cucumber](www.browserstack.com/automate/cucumber-integration)
-* [BrowserStack Automate documentation for Ruby](www.browserstack.com/automate/ruby)
-* [Full range of testing capabilities on BrowserStack](www.browserstack.com/automate/capabilities)
-* [Testing local, development servers with BrowserStack](www.browserstack.com/local-testing)
+* [BrowerStack Automate documentation for Cucumber](https://www.browserstack.com/automate/cucumber-integration)
+* [BrowserStack Automate documentation for Ruby](https://www.browserstack.com/automate/ruby)
+* [Full range of testing capabilities on BrowserStack](https://www.browserstack.com/automate/capabilities)
+* [Testing local, development servers with BrowserStack](https://www.browserstack.com/local-testing)
