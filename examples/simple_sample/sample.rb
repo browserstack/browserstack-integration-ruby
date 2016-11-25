@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'selenium-webdriver'
-require 'browserstack-patch'
+require 'browserstack-automate'
 
 BrowserStack.for "ruby"
 

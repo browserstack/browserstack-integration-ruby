@@ -4,4 +4,4 @@ source "http://rubygems.org"
 # gem "rails"
 
 gem "selenium-webdriver", "~> 3.0.1"
-gem "browserstack-patch", path: "../../"
+gem "browserstack-automate", path: "../../"

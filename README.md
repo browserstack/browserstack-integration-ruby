@@ -39,7 +39,7 @@ BROWSERSTACK_USERNAME - your BrowserStack username
 BROWSERSTACK_ACCESS_KEY - your BrowserStack accesskey
 ```
 
-## To run tests
+## To run unit-tests
 
 ```ruby
 bundle exec rake
@@ -51,6 +51,6 @@ bundle exec rake
 - Add the following to `features/support/env.rb` file. Please create the file if you don't already have one.
 
 ```ruby
-require 'browserstack-patch'
+require 'browserstack-automate'
 BrowserStack.for "cucumber"
 ```

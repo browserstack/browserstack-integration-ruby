@@ -1,10 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'browserstack-patch/version'
+require 'browserstack-automate/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "browserstack-patch"
+  spec.name          = "browserstack-automate"
   spec.version       = Browserstack::VERSION
   spec.authors       = [ "BrowserStack Support" ]
   spec.email         = [ "support@browserstack.com" ]
